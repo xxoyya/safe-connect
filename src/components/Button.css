@@ -1,0 +1,14 @@
+@import "../styles/variables.css";
+
+.Button {
+  background-color: var(--main-text-color);
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 80px;
+
+  font-size: 25px;
+  font-weight: 600;
+  white-space: nowrap;
+}
