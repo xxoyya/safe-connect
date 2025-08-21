@@ -12,14 +12,17 @@ export default function App() {
   return (
     <>
       <Header />
-      <main className="site-container">
+      <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/edu" element={<Edu />} />
           <Route path="/data" element={<Data />} />
           <Route path="/self" element={<Self />} />
           <Route path="/chat" element={<Chat />} />
-          <Route path="*" element={<div style={{padding:24}}>Not Found</div>} />
+          <Route
+            path="*"
+            element={<div style={{ padding: 24 }}>Not Found</div>}
+          />
         </Routes>
       </main>
     </>

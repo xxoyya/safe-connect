@@ -5,6 +5,7 @@ import DataSlider from "../components/dataPage/DataSlider";
 import yearlyForecast from "../data/yearlyForecast.json";
 import facilityNeeds from "../data/facilityNeeds.json";
 import currentFacilityCount from "../data/currentFacilityCount.json";
+import disparityIndex from "../data/disparityIndex.json";
 
 // 데이터 섹션 1에 들어갈 슬라이드 데이터 배열
 const dataSection1Slides = [
@@ -24,8 +25,8 @@ const dataSection1Slides = [
 const dataSection2Slides = [
   {
     type: "map" as const,
-    title: "필요 시설(보호소·상담소) 분포", // 2-1 (지도)
-    componentData: {}, // 지도 데이터 (나중에 추가)
+    title: "지역별 현재 격차 지수", // 2-1 (지도)
+    componentData: disparityIndex,
   },
   {
     type: "graph" as const,
@@ -34,7 +35,7 @@ const dataSection2Slides = [
   },
   {
     type: "map" as const,
-    title: "현재 시설(보호소·상담소) 분포", // 2-3 (지도)
+    title: "상담소 위치", // 2-3 (지도)
     componentData: {}, // 지도 데이터 (나중에 추가)
   },
 ];

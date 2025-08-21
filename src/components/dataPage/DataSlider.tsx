@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Graph from "./Graph";
-import MapPlaceholder from "./MapPlaceholder";
-import "./DataSlider.css"; // 슬라이더 스타일을 위한 CSS 파일
+import SgisMap from "./SgisMap";
+import "./DataSlider.css";
 
-// 슬라이드 데이터의 타입을 정의합니다.
+// 슬라이드 데이터의 타입을 정의
 type SlideData = {
   type: "graph" | "map";
   title: string;
@@ -49,7 +49,9 @@ const DataSlider: React.FC<DataSliderProps> = ({ slides }) => {
             datasets={currentSlide.componentData.datasets as any}
           />
         )}
-        {currentSlide.type === "map" && <MapPlaceholder />}
+        {currentSlide.type === "map" && (
+          <SgisMap data={currentSlide.componentData} />
+        )}
       </div>
     </div>
   );
