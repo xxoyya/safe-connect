@@ -1,0 +1,16 @@
+:root { 
+    --site-width: 1100px; 
+}
+
+html, body { 
+    margin:0; 
+}
+
+body { 
+    font-family: Pretendard, system-ui, -apple-system, Arial, sans-serif; color:#222; }
+
+.site-wrap { background:#f7fbff; min-height:100vh; }
+.site-container { max-width: var(--site-width); margin: 0 auto; padding: 24px 16px; }
+
+.page { padding: 24px 0; font-size: 18px; }
+
