@@ -11,4 +11,6 @@ body {
 
 .site-wrap { background:#f7fbff; min-height:100vh; }
 .site-container { max-width: var(--site-width); margin: 0 auto; padding: 24px 16px; }
+
 .page { padding: 24px 0; font-size: 18px; }
+
