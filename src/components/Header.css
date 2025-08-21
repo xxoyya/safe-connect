@@ -1,7 +1,9 @@
 .sc-header { 
   width:100%; 
   background:#F9FCFF; 
-  border-bottom:1px solid #e6e6e6; }
+  border-bottom:1px solid #e6e6e6; 
+  margin-bottom:80px;
+}
 
 .sc-top { 
   padding:18px 16px;
@@ -9,7 +11,8 @@
 .sc-logo { 
   height:70px; 
   display:block; 
-  margin-left: 120px;
+  margin-left: 400px;
+  padding:20px;
 }
 
 .sc-gnb { 
