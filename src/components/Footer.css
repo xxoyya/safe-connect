@@ -1,7 +1,9 @@
+@import "../styles/variables.css";
 .footer { 
     width:100%; 
-    background:#F9FCFF; 
-    border-top:1px solid #e6e6e6; 
+    background: var(--white-color); 
+    border-top:1px solid var(--gray-color);
+    margin-top: 50px;
 }
 
 .footer-content {
@@ -49,7 +51,7 @@
 .footer-column p {
   margin: 0;
   padding: 0;
-  color: #979797;
+  color: var(--dark-gray-color);
   font-weight:lighter;
 }
 
@@ -64,6 +66,6 @@
   display: block;
   width: auto;
   height: 1px;
-  background-color: black;
+  background-color: var(--black-color);
   margin: 5px auto 0 auto;
 }
