@@ -1,0 +1,166 @@
+.edu-slider{
+  position:relative;
+  max-width:600px;
+  margin:24px auto 40px;
+  display:flex; 
+  align-items:center; 
+  justify-content:center;
+  gap:16px;
+}
+.slide-img{ 
+  max-width:100%; 
+  max-height:420px; 
+  height:auto; 
+  border-radius:12px; 
+}
+.arrow{
+  width:40px; 
+  height:40px; 
+  border-radius:50%;
+  border:1px solid #0f172a; 
+  background:#fff; 
+  color:#2B5C86;
+  font-size:22px; 
+  font-weight:800; 
+  display:grid; 
+  place-items:center;
+  cursor:pointer;
+}
+
+
+
+
+
+
+
+
+.rank { 
+  text-align: center; 
+  margin: 12px 0 8px; 
+}
+.rank-pill{
+  display:inline-flex; 
+  align-items:center; 
+  justify-content:center;
+  height: 40px;
+  width: 100px; 
+  padding: 0 20px;
+  background:#3A8293; 
+  color:#fff; 
+  font-weight:800; 
+  border-radius:999px;
+}
+
+/* 가로 정렬 */
+.rank-row{
+  display:flex; justify-content:center; align-items:flex-start;
+  gap: clamp(28px, 7vw, 60px);
+  margin-top: 10px;
+  padding: 0; list-style: none;
+}
+
+/* 각 아이템: 세로 스택 */
+.rank-item{
+  width: 86px;                         /* 폭 고정으로 균형 */
+  display:flex; flex-direction:column; align-items:center;
+}
+
+/* 메달이 들어갈 자리 (없을 땐 빈 공간 유지) */
+.medal-slot{
+  height: 28px;                        /* ← 스샷처럼 작은 메달 높이 */
+  display:flex; align-items:center; justify-content:center;
+  margin-bottom: 6px;
+}
+.medal-slot img{ width: 28px; height: auto; object-fit: contain; }
+
+/* 아바타 (Account 아이콘) */
+.avatar img{
+  width: 60px; height: 60px;           /* 스샷 크기감 */
+  display:block; border-radius: 50%;
+  box-shadow: 0 6px 14px rgba(15,23,42,.12);
+}
+
+/* 닉네임 / 점수 */
+.nick{
+  margin-top: 6px;
+  font-size: 12px; font-weight: 700; color:#374151; /* 진회색 */
+}
+.score{
+  margin-top: 2px;
+  font-size: 12px; font-weight: 800; color:#FF2D7A; /* 분홍 */
+}
+
+
+/* 연한 파란 박스 */
+.quiz-start{
+  max-width: 920px;
+  margin: 24px auto 32px;
+  padding: 0 16px;
+}
+
+.quiz-start__inner{
+  height: 320px;                        /* 스샷 비율 느낌 */
+  border-radius: 16px;
+  background: #E6F2FF;                  /* 기본 */
+  background: linear-gradient(180deg, #EAF4FF 0%, #E6F2FF 100%); /* 은은한 그라데 */
+  border: 1px solid #dde7f5;
+  box-shadow: 0 8px 24px rgba(15,23,42,.06) inset;
+  
+  display: grid; 
+  place-items: center;                   /* ✅ 가운데 정렬 핵심 */
+}
+
+/* 버튼이 너무 작으면 살짝 키우고 싶을 때(선택) */
+.quiz-start .sc-start-btn{              /* StartButton이 내부에서 주는 클래스가 있으면 맞춰 사용 */
+  transform: translateZ(0);
+}
+
+
+
+
+
+
+
+
+
+
+.help-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 16px;
+}
+
+.help-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 720px;
+  padding: 20px;
+  margin: 0 auto;   /* 가운데 정렬 */
+  gap: 20px;
+}
+
+.help-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 16px;
+  color: #0f172a;
+  line-height: 1.8;
+}
+
+.help-rectangle {
+  flex-shrink: 0;       /* 크기 줄어들지 않게 */
+  width: 160px;         /* 원하는 크기 */
+  height: 120px;
+  border: 2px dashed #94a3b8; /* 회색 점선 박스 */
+  border-radius: 8px;
+  background: #f8fafc;  /* 살짝 옅은 배경 */
+}
+
