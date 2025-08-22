@@ -49,9 +49,7 @@ const DataSlider: React.FC<DataSliderProps> = ({ slides }) => {
             datasets={currentSlide.componentData.datasets as any}
           />
         )}
-        {currentSlide.type === "map" && (
-          <SgisMap data={currentSlide.componentData} />
-        )}
+        {currentSlide.type === "map" && <SgisMap />}
       </div>
     </div>
   );

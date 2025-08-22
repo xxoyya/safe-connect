@@ -1,115 +1,68 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 
-// 1. props로 받을 데이터 타입을 정의합니다.
-type DisparityData = {
-  adm_cd: string;
-  adm_nm: string;
-  level: "심각" | "부족" | "주의" | "적정";
-};
-
-type SgisMapProps = {
-  data: DisparityData[];
-};
-
+// window 객체에 sop 네임스페이스가 있음을 TypeScript에 알려줍니다.
 declare global {
   interface Window {
-    sgis: any;
+    sop: any;
   }
 }
 
-const SgisMap: React.FC<SgisMapProps> = ({ data }) => {
-  const mapRef = useRef<HTMLDivElement>(null);
-  const mapInstanceRef = useRef<any>(null);
+const SgisMap = () => {
+  // 1. 지도가 그려질 DOM 요소를 참조하기 위해 useRef를 사용합니다.
+  const mapContainer = useRef<HTMLDivElement>(null);
 
-  const [isScriptLoaded, setIsScriptLoaded] = useState(false);
+  // 2. 발급받은 API 키를 여기에 입력합니다.
+  const API_KEY = "YOUR_CONSUMER_KEY"; // 발급받은 서비스 키(Consumer Key)
 
-  const SERVICE_ID = import.meta.env.VITE_SGIS_CONSUMER_KEY; // 수정
-  const SERVICE_KEY = import.meta.env.VITE_SGIS_CONSUMER_SECRET; // 수정
-
+  // 3. useEffect를 사용해 컴포넌트가 처음 렌더링될 때 스크립트를 불러옵니다.
   useEffect(() => {
-    // ... (스크립트 로드하는 부분은 이전과 동일)
     const script = document.createElement("script");
-    script.src = "https://sgisapi.kostat.go.kr/OpenAPI3/js/sgis.js";
+    script.src = `https://sgisapi.kostat.go.kr/OpenAPI3/auth/javascriptAuth?consumer_key=${API_KEY}`;
     script.async = true;
-    script.onload = () => setIsScriptLoaded(true);
-    document.head.appendChild(script);
-    return () => {
-      document.head.removeChild(script);
-    };
-  }, []);
 
-  useEffect(() => {
-    if (!isScriptLoaded || !mapRef.current) return;
+    // 4. 스크립트 로딩이 완료되면 실행될 콜백 함수입니다.
+    script.onload = () => {
+      // ✅ 1. 스크립트가 로드되면 이 메시지가 보여야 합니다.
+      console.log("✅ 스크립트 onload 실행됨");
 
-    // 2. 등급에 따라 색상 코드를 반환하는 함수
-    const getColorByLevel = (level: DisparityData["level"]) => {
-      switch (level) {
-        case "심각":
-          return "#D9534F"; // 빨강
-        case "부족":
-          return "#F0AD4E"; // 주황
-        case "주의":
-          return "#FFFF00"; // 노랑
-        case "적정":
-          return "#5CB85C"; // 초록
-        default:
-          return "#CCCCCC"; // 회색
+      // ✅ 2. window.sop 객체가 생성되었는지 확인합니다.
+      console.log("▶️ window.sop 객체:", window.sop);
+
+      // ✅ 3. 지도를 그릴 div DOM 요소가 있는지 확인합니다.
+      console.log("▶️ mapContainer.current:", mapContainer.current);
+
+      if (
+        mapContainer.current &&
+        window.sop &&
+        typeof window.sop.Map === "function"
+      ) {
+        console.log("🗺️ 지도 생성 시도...");
+        try {
+          const map = new window.sop.Map(mapContainer.current);
+          map.setView(window.sop.utmk(953820, 1953437), 9);
+          console.log("🎉 지도 생성 성공!");
+        } catch (error) {
+          console.error("❌ 지도 생성 중 오류 발생:", error);
+        }
+      } else {
+        console.error(
+          "❌ 지도 생성 실패: mapContainer 또는 window.sop.Map 함수가 없습니다."
+        );
       }
     };
 
-    const initializeMap = async () => {
-      // 3. 인증 토큰 받아오기 (이전과 동일)
-      const getAccessToken = async () => {
-        try {
-          const res = await fetch(
-            `https://sgisapi.kostat.go.kr/OpenAPI3/auth/authentication.json?consumer_key=${SERVICE_ID}&consumer_secret=${SERVICE_KEY}`
-          );
-          const json = await res.json();
-          return json.result.accessToken;
-        } catch (error) {
-          console.error("인증 토큰 발급 실패:", error);
-        }
-      };
+    document.head.appendChild(script);
 
-      const accessToken = await getAccessToken();
-      if (!accessToken) return;
-
-      // 4. 지도 생성 (이전과 동일)
-      mapInstanceRef.current = new window.sgis.Map(mapRef.current, {
-        accessToken: accessToken,
-        center: [966307, 1943468],
-        zoom: 7,
-      });
-
-      // 5. 행정구역 경계 데이터 가져와서 폴리곤 그리기
-      data.forEach(async (regionData) => {
-        try {
-          // 행정구역 경계 API 호출
-          const res = await fetch(
-            `https://sgisapi.kostat.go.kr/OpenAPI3/boundary/hadmarea.geojson?accessToken=${accessToken}&year=2024&adm_cd=${regionData.adm_cd}`
-          );
-          const geojson = await res.json();
-
-          // 폴리곤 생성 및 지도에 추가
-          new window.sgis.Polygon(mapInstanceRef.current, {
-            geometry: geojson, // API로 받은 GeoJSON 데이터
-            style: {
-              fillColor: getColorByLevel(regionData.level), // 등급에 따른 색상
-              fillOpacity: 0.7,
-              strokeColor: "#FFFFFF",
-              strokeWeight: 1,
-            },
-          });
-        } catch (error) {
-          console.error(`${regionData.adm_nm} 경계 데이터 로드 실패:`, error);
-        }
-      });
+    // 5. 컴포넌트가 사라질 때 스크립트를 정리합니다. (메모리 누수 방지)
+    return () => {
+      document.head.removeChild(script);
     };
+  }, [API_KEY]); // API_KEY가 변경될 때만 이 effect를 다시 실행합니다.
 
-    initializeMap();
-  }, [isScriptLoaded, data]);
-
-  return <div ref={mapRef} style={{ width: "100%", height: "100%" }} />;
+  return (
+    // 6. 지도가 그려질 컨테이너 div입니다.
+    <div ref={mapContainer} style={{ width: "100%", height: "100%" }} />
+  );
 };
 
 export default SgisMap;
