@@ -1,4 +1,3 @@
-// src/App.tsx
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
@@ -12,7 +11,7 @@ export default function App() {
   return (
     <>
       <Header />
-      <main className="site-container">
+      <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/edu" element={<Edu />} />

@@ -1,16 +1,14 @@
 .edu-slider{
   position:relative;
-  max-width:600px;
-  margin:24px auto 40px;
+  margin:100px auto 300px;
   display:flex; 
   align-items:center; 
   justify-content:center;
   gap:16px;
 }
 .slide-img{ 
-  max-width:100%; 
-  max-height:420px; 
-  height:auto; 
+  width:600px; 
+  height:600px; 
   border-radius:12px; 
 }
 .arrow{
@@ -36,131 +34,258 @@
 
 .rank { 
   text-align: center; 
-  margin: 12px 0 8px; 
+  margin: 100px 0 8px; 
 }
 .rank-pill{
   display:inline-flex; 
   align-items:center; 
   justify-content:center;
-  height: 40px;
-  width: 100px; 
+  height: 50px;
+  width: 120px; 
   padding: 0 20px;
+  margin-bottom: 20px;
   background:#3A8293; 
   color:#fff; 
+  font-size: 18px;
   font-weight:800; 
   border-radius:999px;
 }
-
-/* 가로 정렬 */
 .rank-row{
-  display:flex; justify-content:center; align-items:flex-start;
+  display:flex; 
+  justify-content:center; 
+  align-items:flex-start;
   gap: clamp(28px, 7vw, 60px);
   margin-top: 10px;
-  padding: 0; list-style: none;
+  padding: 0; 
+  list-style: none;
 }
-
-/* 각 아이템: 세로 스택 */
 .rank-item{
-  width: 86px;                         /* 폭 고정으로 균형 */
-  display:flex; flex-direction:column; align-items:center;
+  width: 86px;                         
+  display:flex; 
+  flex-direction:column; 
+  align-items:center;
 }
-
-/* 메달이 들어갈 자리 (없을 땐 빈 공간 유지) */
 .medal-slot{
-  height: 28px;                        /* ← 스샷처럼 작은 메달 높이 */
-  display:flex; align-items:center; justify-content:center;
+  height: 28px;                     
+  display:flex; 
+  align-items:center; 
+  justify-content:center;
   margin-bottom: 6px;
 }
-.medal-slot img{ width: 28px; height: auto; object-fit: contain; }
+.medal-slot img{ 
+  width: 50px; 
+  height: auto; 
+  object-fit: contain; }
 
-/* 아바타 (Account 아이콘) */
+
 .avatar img{
-  width: 60px; height: 60px;           /* 스샷 크기감 */
-  display:block; border-radius: 50%;
+  width: 100px; 
+  height: 100px;       
+  display:block;
+  border-radius: 50%;
   box-shadow: 0 6px 14px rgba(15,23,42,.12);
 }
-
-/* 닉네임 / 점수 */
 .nick{
   margin-top: 6px;
-  font-size: 12px; font-weight: 700; color:#374151; /* 진회색 */
+  font-size: 16px; 
+  font-weight: 700; 
+  color:#374151; 
 }
 .score{
   margin-top: 2px;
-  font-size: 12px; font-weight: 800; color:#FF2D7A; /* 분홍 */
+  font-size: 16px; 
+  font-weight: 800; 
+  color:#FF2D7A;
 }
 
 
-/* 연한 파란 박스 */
-.quiz-start{
-  max-width: 920px;
-  margin: 24px auto 32px;
-  padding: 0 16px;
-}
-
-.quiz-start__inner{
-  height: 320px;                        /* 스샷 비율 느낌 */
+/* 퀴즈 카드 */
+.q-card--fixed {
+  margin: 40px auto;
+  width: 800px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #e7f1ff;
   border-radius: 16px;
-  background: #E6F2FF;                  /* 기본 */
-  background: linear-gradient(180deg, #EAF4FF 0%, #E6F2FF 100%); /* 은은한 그라데 */
-  border: 1px solid #dde7f5;
-  box-shadow: 0 8px 24px rgba(15,23,42,.06) inset;
-  
-  display: grid; 
-  place-items: center;                   /* ✅ 가운데 정렬 핵심 */
+  box-shadow: 0 6px 16px rgba(0,0,0,.08);
+  padding: 20px;
 }
 
-/* 버튼이 너무 작으면 살짝 키우고 싶을 때(선택) */
-.quiz-start .sc-start-btn{              /* StartButton이 내부에서 주는 클래스가 있으면 맞춰 사용 */
-  transform: translateZ(0);
+.q-start {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
+.q-body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  height: 100%;
+}
 
+.q-head {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+}
 
+.q-pill {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 6px 14px;
+  background:#3A8293;
+  color:#fff;
+  border-radius: 999px;
+  font-weight:700;
+}
 
+.q-progress {
+  font-size: 14px;
+  color:#555;
+}
 
-
-
-
-
-
-.help-title {
+.q-question {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  font-size: 22px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  padding: 0 20px;
+  background: #fff;
+  border-radius: 12px;
+}
+
+.q-choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.q-choice {
+  font-size: 72px;
+  font-weight: 900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 140px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,.08);
+  cursor: pointer;
+  transition: transform .15s, box-shadow .15s;
+}
+.q-choice:hover {
+  transform: translateY(-3px);
+  box-shadow:0 6px 12px rgba(0,0,0,.15);
+}
+
+.q-o { color:#2563eb; }
+.q-x { color:#dc2626; }
+
+.q-result {
+  text-align:center;
+}
+
+.q-result-title {
+  font-size: 24px;
   font-weight: 800;
-  color: #0f172a;
   margin-bottom: 16px;
 }
 
-.help-box {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  background: #fff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 720px;
-  padding: 20px;
-  margin: 0 auto;   /* 가운데 정렬 */
-  gap: 20px;
+.q-result-score {
+  font-size: 18px;
+  margin-bottom: 24px;
 }
 
-.help-list {
+.q-actions button {
+  margin-top: 12px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.legal-help { margin: 100px 0 0; }
+.lh-row{
+  display:flex;
+  align-items:flex-start;
+  gap: 40px;              
+}
+.lh-left{ margin-left: 300px; }
+.lh-title{
+  margin: 0 0 10px;
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  color:#3A6793;
+}
+.lh-box{
+  display:flex;
+  align-items:flex-start;
+  gap: 30px;
+}
+.lh-icon img{
+  width: 100px;
+  height: 100px;
+  margin-top: 30px;
+  margin-right: 30px;
+  object-fit: contain;
+  display:block;
+}
+.lh-list{
   margin: 0;
   padding: 0;
   list-style: none;
-  font-size: 16px;
-  color: #0f172a;
-  line-height: 1.8;
+  font-size: 18px;
+  color: #1f2937;
 }
-
-.help-rectangle {
-  flex-shrink: 0;       /* 크기 줄어들지 않게 */
-  width: 160px;         /* 원하는 크기 */
-  height: 120px;
-  border: 2px dashed #94a3b8; /* 회색 점선 박스 */
-  border-radius: 8px;
-  background: #f8fafc;  /* 살짝 옅은 배경 */
+.lh-list li{
+  display: grid;
+  grid-template-columns: 1fr 160px; 
+  align-items: baseline;
+  column-gap: 24px;
+  padding: 6px 0;
+}
+.lh-list li span{ font-weight: 700; }
+.lh-list li b{
+  justify-self: end;
+  font-weight: 800;
+  color: #0f1a2c;
+}
+.lh-rect{
+  flex: 1;     
+  margin-left: 200px;
+  margin-top: 50px;
+  height: 110px;
+  background:#2B3046;
+  border-radius: 4px;
 }
 
