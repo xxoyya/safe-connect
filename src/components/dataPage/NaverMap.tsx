@@ -59,7 +59,7 @@ const NaverMap: React.FC<NaverMapProps> = ({ data, center, zoom }) => {
         window.naver.maps.Event.addListener(
           marker,
           "click",
-          function (e: naver.maps.PointerEvent) {
+          function (_e: naver.maps.PointerEvent) {
             if (infoWindow.getMap()) {
               infoWindow.close();
             } else {
