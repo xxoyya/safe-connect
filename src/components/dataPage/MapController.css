@@ -1,0 +1,40 @@
+.map-controller-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 15px;
+}
+
+.region-selector {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.region-selector button {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.region-selector button:hover {
+  background-color: #f0f0f0;
+  border-color: #aaa;
+}
+
+.region-selector button.active {
+  background-color: #3a8293;
+  color: white;
+  border-color: #3a8293;
+  font-weight: bold;
+}
+
+.map-area {
+  flex-grow: 1; /* 남는 공간을 모두 차지 */
+  min-height: 0;
+}
