@@ -1,0 +1,83 @@
+@import "../../styles/variables.css";
+
+/* 각 설문 질문을 감싸는 컨테이너 */
+.survey-wrapper {
+  margin-bottom: 40px;
+}
+
+/* 기본 Survey 박스 */
+.survey-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 15px;
+  border: 2px solid var(--gray-color);
+  border-radius: 12px;
+  flex-wrap: wrap; /* 화면이 좁으면 이미지 밑으로 내려가게 */
+}
+
+/* 질문 텍스트 */
+.survey-question {
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: var(--main-text-color);
+  width: 100%;
+}
+
+/* 옵션 박스 */
+.survey-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex: 1;
+  min-width: 250px;
+}
+
+/* 옵션 라벨 */
+.survey-option {
+  display: flex;
+  align-items: center;
+  min-width: 250px;
+  gap: 8px;
+}
+
+/* 라디오 버튼 스타일 */
+.survey-option input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid black;
+  background-color: white;
+  position: relative;
+  cursor: pointer;
+}
+
+.survey-option input[type="radio"]:checked {
+  background-color: black;
+}
+
+.survey-option input[type="radio"]:checked::after {
+  content: "✔";
+  color: white;
+  font-size: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -52%);
+  pointer-events: none;
+}
+
+/* 이미지 */
+.survey-img {
+  width: 300px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* 서브 질문용 컨테이너 */
+.sub-survey-container {
+  margin-top: 20px;
+}

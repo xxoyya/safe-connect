@@ -1,0 +1,36 @@
+@import "../../styles/variables.css";
+
+.self-container {
+  margin: 5px 80px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.question-box {
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 25px;
+  padding: 15px;
+  border: 1px solid var(--black-color);
+  border-radius: 12px;
+  background: var(--white-color);
+}
+
+.question-text {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
