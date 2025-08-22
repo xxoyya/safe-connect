@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Graph from "./Graph";
 import KoreaMap from "./KoreaMap";
+import NaverMap from "./NaverMap";
 import "./DataSlider.css";
 
-type SlideData = {
+export type SlideData = {
   type: "graph" | "map";
+  mapType?: "choropleth" | "marker"; // type이 'map'일 때만 사용
   title: string;
   componentData: any;
 };
@@ -27,6 +29,7 @@ const DataSlider: React.FC<DataSliderProps> = ({ slides }) => {
   };
 
   const currentSlide = slides[currentIndex];
+  const { type, mapType, componentData, title } = currentSlide;
 
   return (
     <div className="slider-container">
@@ -34,23 +37,29 @@ const DataSlider: React.FC<DataSliderProps> = ({ slides }) => {
         <button onClick={handlePrev} className="arrow-button">
           ‹
         </button>
-        <div className="slider-title">{currentSlide.title}</div>
+        <div className="slider-title">{title}</div>
         <button onClick={handleNext} className="arrow-button">
           ›
         </button>
       </div>
       <div className="slider-content">
-        {currentSlide.type === "graph" && (
+        {type === "graph" && (
           <Graph
-            {...currentSlide.componentData}
-            datasets={currentSlide.componentData.datasets as any}
+            key={title}
+            {...componentData}
+            datasets={componentData.datasets as any}
           />
         )}
-        {currentSlide.type === "map" && (
-          <KoreaMap
-            key={currentSlide.title}
-            data={currentSlide.componentData}
-          />
+
+        {type === "map" && (
+          <>
+            {mapType === "choropleth" && (
+              <KoreaMap key={title} data={componentData} />
+            )}
+            {mapType === "marker" && (
+              <NaverMap key={title} data={componentData} />
+            )}
+          </>
         )}
       </div>
     </div>
