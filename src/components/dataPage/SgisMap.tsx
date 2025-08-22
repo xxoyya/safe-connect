@@ -1,8 +1,4 @@
-// src/components/dataPage/SgisMap.tsx
-
-import React, { useEffect, useRef } from "react";
-
-// window 객체에 sop 네임스페이스가 있음을 TypeScript에 알려줍니다.
+import { useEffect, useRef } from "react";
 declare global {
   interface Window {
     sop: any;
