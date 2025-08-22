@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Graph from "./Graph";
 import KoreaMap from "./KoreaMap";
-import NaverMap from "./NaverMap";
+import MapController from "./MapController";
 import "./DataSlider.css";
 
 export type SlideData = {
@@ -57,7 +57,7 @@ const DataSlider: React.FC<DataSliderProps> = ({ slides }) => {
               <KoreaMap key={title} data={componentData} />
             )}
             {mapType === "marker" && (
-              <NaverMap key={title} data={componentData} />
+              <MapController key={title} markerData={componentData} />
             )}
           </>
         )}

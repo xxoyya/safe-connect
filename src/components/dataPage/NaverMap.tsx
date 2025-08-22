@@ -16,27 +16,32 @@ type Center = {
 
 type NaverMapProps = {
   data: Center[];
+  center?: { lat: number; lng: number };
+  zoom?: number;
 };
 
-const NaverMap: React.FC<NaverMapProps> = ({ data }) => {
+const NaverMap: React.FC<NaverMapProps> = ({ data, center, zoom }) => {
   const mapElement = useRef<HTMLDivElement>(null);
+  const mapInstanceRef = useRef<naver.maps.Map | null>(null);
 
   useEffect(() => {
     // naver.maps 객체가 로드될 때까지 기다립니다.
     const tryInitializeMap = () => {
-      if (!window.naver || !mapElement.current) {
+      if (!window.naver?.maps || !mapElement.current) {
         setTimeout(tryInitializeMap, 100);
         return;
       }
 
-      // 지도 초기 옵션 설정
       const mapOptions = {
-        center: new window.naver.maps.LatLng(36.3504, 127.3845), // 초기 중심점: 대전
-        zoom: 7,
+        center: new window.naver.maps.LatLng(
+          center?.lat || 36.3504,
+          center?.lng || 127.3845
+        ),
+        zoom: zoom || 7,
       };
 
-      // 지도 생성
       const map = new window.naver.maps.Map(mapElement.current, mapOptions);
+      mapInstanceRef.current = map;
 
       // 데이터 배열을 순회하며 마커 생성
       data.forEach((center) => {
@@ -67,6 +72,14 @@ const NaverMap: React.FC<NaverMapProps> = ({ data }) => {
 
     tryInitializeMap();
   }, [data]);
+
+  useEffect(() => {
+    const map = mapInstanceRef.current;
+    if (map && center && zoom) {
+      map.setCenter(new window.naver.maps.LatLng(center.lat, center.lng));
+      map.setZoom(zoom);
+    }
+  }, [center, zoom]); // center나 zoom prop이 바뀔 때마다 실행
 
   return <div ref={mapElement} style={{ width: "100%", height: "100%" }} />;
 };
