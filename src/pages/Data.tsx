@@ -1,17 +1,16 @@
 import Title from "../components/Title";
-import DataSlider from "../components/dataPage/DataSlider";
+import DataSlider, { type SlideData } from "../components/dataPage/DataSlider";
 
-// JSON 데이터 import
 import yearlyForecast from "../data/yearlyForecast.json";
 import facilityNeeds from "../data/facilityNeeds.json";
 import currentFacilityCount from "../data/currentFacilityCount.json";
 import disparityIndex from "../data/disparityIndex.json";
+import counselingCenters from "../data/counselingCenters.json";
 
-// 데이터 섹션 1에 들어갈 슬라이드 데이터 배열
-const dataSection1Slides = [
+const dataSection1Slides: SlideData[] = [
   {
     type: "graph" as const,
-    title: "지역별 가정폭력 신고 예측 데이터",
+    title: "지역별 가정폭력 신고 예측 데이터 (2026)",
     componentData: yearlyForecast,
   },
   {
@@ -21,11 +20,11 @@ const dataSection1Slides = [
   },
 ];
 
-// 데이터 섹션 2에 들어갈 슬라이드 데이터 배열
-const dataSection2Slides = [
+const dataSection2Slides: SlideData[] = [
   {
     type: "map" as const,
-    title: "지역별 현재 격차 지수", // 2-1 (지도)
+    mapType: "choropleth", // 단계적 구분도
+    title: "지역별 현재 격차 지수(2023)", // 2-1 (지도)
     componentData: disparityIndex,
   },
   {
@@ -35,8 +34,9 @@ const dataSection2Slides = [
   },
   {
     type: "map" as const,
+    mapType: "marker", // 마커 지도
     title: "상담소 위치", // 2-3 (지도)
-    componentData: {}, // 지도 데이터 (나중에 추가)
+    componentData: counselingCenters,
   },
 ];
 
