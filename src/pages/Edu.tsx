@@ -13,9 +13,10 @@ import profil3 from "../assets/profil/profil3.jpg";
 import profil4 from "../assets/profil/profil4.jpg";
 import profil5 from "../assets/profil/profil5.jpg";
 
-import img1 from "../assets/sample.png";
-import img2 from "../assets/sample.png";
-import img3 from "../assets/sample.png";
+import page1 from "../assets/card_news/page1.png";
+import page2 from "../assets/card_news/page2.png";
+import page3 from "../assets/card_news/page3.png";
+import page4 from "../assets/card_news/page4.png";
 
 import Phone from "../assets/Phone.png";
 
@@ -98,7 +99,7 @@ const AVATARS: Record<string, string> = {
 };
 
 export default function Edu() {
-  const images = [img1, img2, img3];
+  const images = [page1, page2, page3,page4];
   const [nickname, setNickname] = useState("");
   const getAvatar = (name: string) => AVATARS[name] ?? Account;
   const [idx, setIdx] = useState(0);
