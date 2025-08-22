@@ -45,7 +45,7 @@
   align-items:center;
 }
 .string{
-  margin-left: 100px;
+  margin-left: 350px;
 }
 .title { 
   font-size: clamp(40px,5vw,56px); 
@@ -63,7 +63,7 @@
 .chain-img {
   max-width:220px;   
   height:auto;
-  margin:0 100px ;
+  margin-right: 200px;
 }
 
 
