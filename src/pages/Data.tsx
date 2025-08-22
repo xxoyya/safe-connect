@@ -11,7 +11,7 @@ import disparityIndex from "../data/disparityIndex.json";
 const dataSection1Slides = [
   {
     type: "graph" as const,
-    title: "지역별 가정폭력 신고 예측 데이터",
+    title: "지역별 가정폭력 신고 예측 데이터 (2026)",
     componentData: yearlyForecast,
   },
   {
@@ -25,7 +25,7 @@ const dataSection1Slides = [
 const dataSection2Slides = [
   {
     type: "map" as const,
-    title: "지역별 현재 격차 지수", // 2-1 (지도)
+    title: "지역별 현재 격차 지수(2023)", // 2-1 (지도)
     componentData: disparityIndex,
   },
   {
