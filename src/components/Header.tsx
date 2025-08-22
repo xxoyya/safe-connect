@@ -5,7 +5,7 @@ import logo_title from "../assets/logo_title.png";
 export default function Header() {
   return (
     <header className="sc-header">
-      <div className="site-container sc-top">
+      <div>
         <Link to="/">
           <img src={logo_title} alt="Safe Connect" className="sc-logo" />
         </Link>
