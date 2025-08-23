@@ -30,18 +30,18 @@ const dataSection2Slides: SlideData[] = [
   },
   {
     type: "graph" as const,
-    title: "2023 지역별 신고 건수", // 2-2 (그래프)
+    title: "지역별 신고 건수 (2023)", // 2-2 (그래프)
     componentData: reportsByRegion,
   },
   {
     type: "graph" as const,
-    title: "2025 지역별 시설(보호소·상담소) 수", // 2-2 (그래프)
+    title: "지역별 시설(보호소·상담소) 수 (2025)", // 2-2 (그래프)
     componentData: currentFacilityCount,
   },
   {
     type: "map" as const,
     mapType: "marker", // 마커 지도
-    title: "상담소 위치", // 2-3 (지도)
+    title: "상담소 위치 (2025)", // 2-3 (지도)
     componentData: counselingCenters,
   },
 ];
