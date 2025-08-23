@@ -6,6 +6,7 @@ import facilityNeeds from "../data/facilityNeeds.json";
 import currentFacilityCount from "../data/currentFacilityCount.json";
 import disparityIndex from "../data/disparityIndex.json";
 import counselingCenters from "../data/counselingCenters.json";
+import reportsByRegion from "../data/reportsByRegion.json";
 
 const dataSection1Slides: SlideData[] = [
   {
@@ -29,6 +30,11 @@ const dataSection2Slides: SlideData[] = [
   },
   {
     type: "graph" as const,
+    title: "2023 지역별 신고 건수", // 2-2 (그래프)
+    componentData: reportsByRegion,
+  },
+  {
+    type: "graph" as const,
     title: "지역별 현재 시설(보호소·상담소) 수", // 2-2 (그래프)
     componentData: currentFacilityCount,
   },
@@ -38,6 +44,7 @@ const dataSection2Slides: SlideData[] = [
     title: "상담소 위치", // 2-3 (지도)
     componentData: counselingCenters,
   },
+
 ];
 
 const Data = () => {
