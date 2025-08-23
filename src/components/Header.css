@@ -3,6 +3,9 @@
   background: #f9fcff;
   border-bottom: 1px solid #e6e6e6;
   margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .sc-top {
@@ -11,7 +14,6 @@
 .sc-logo {
   height: 70px;
   display: block;
-  margin-left: 320px;
   padding: 20px;
 }
 
