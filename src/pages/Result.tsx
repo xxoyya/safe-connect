@@ -43,8 +43,6 @@ function Result() {
     <>
       <Title text="자가진단 결과" />
       <div className="result-container">
-
-
         {/* 상태 + 응답 */}
         <div className="result-row">
           <div className="state-box">

@@ -62,15 +62,16 @@ export default function Chat() {
   const callApi = async (currentMessages: ChatMessage[]) => {
     try {
       // API 호출 대신 직접 함수 사용
-      const response = getChatResponse({
+      const response = await getChatResponse({
         messages: [
           { role: "system" as const, content: botPrompt.content },
-          ...currentMessages.map((m) => ({ 
-            role: (m.role === "bot" ? "assistant" : "user") as "user" | "assistant", 
-            content: m.text 
+          ...currentMessages.map((m) => ({
+            role: (m.role === "bot" ? "assistant" : "user") as "user" | "assistant",
+            content: m.text,
           })),
         ],
       });
+
 
       const reply: ChatMessage = {
         id: crypto.randomUUID(),
