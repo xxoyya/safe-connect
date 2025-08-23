@@ -16,7 +16,7 @@ const dataSection1Slides: SlideData[] = [
   },
   {
     type: "graph" as const,
-    title: "필요 시설(보호소·상담소) 차트",
+    title: "필요 시설(보호소·상담소) 차트 (2026)",
     componentData: facilityNeeds,
   },
 ];
