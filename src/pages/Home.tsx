@@ -1,4 +1,4 @@
-import "./home.css";
+import "./Home.css";
 import chat_bubble from "../assets/chat_bubble.png";
 import link from "../assets/link.png";
 import arrow from "../assets/arrow.png";
