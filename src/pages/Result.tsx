@@ -40,57 +40,58 @@ function Result() {
   );
 
   return (
-    <div className="result-container">
+    <>
       <Title text="자가진단 결과" />
+      <div className="result-container">
+        {/* 상태 + 응답 */}
+        <div className="result-row">
+          <div className="state-box">
+            <h2>상태</h2>
+            <p>{answers["2"] || "결과 없음"}</p>
+          </div>
 
-      {/* 상태 + 응답 */}
-      <div className="result-row">
-        <div className="state-box">
-          <h2>상태</h2>
-          <p>{answers["2"] || "결과 없음"}</p>
-        </div>
-
-        <div className="result-box">
-          <h2>응답 한 번에 몰아보기</h2>
-          {Object.keys(answers).map((qId) => (
-            <p key={qId}>
-              <b>Q{qId}:</b> {answers[qId]}
-            </p>
-          ))}
-        </div>
-      </div>
-
-      {/* nav + 설명 */}
-      <div className="result-row">
-        <div className="result-nav">
-          <ul>
-            {navItems.map((item, i) => (
-              <li
-                key={i}
-                className={activeIndex === i ? "active" : ""}
-                onClick={() => setActiveIndex(i)}
-              >
-                {item}
-              </li>
+          <div className="result-box">
+            <h2>응답 한 번에 몰아보기</h2>
+            {Object.keys(answers).map((qId) => (
+              <p key={qId}>
+                <b>Q{qId}:</b> {answers[qId]}
+              </p>
             ))}
-          </ul>
+          </div>
         </div>
 
-        <div className="result-detail survey-box">
-          <h2>{navItems[activeIndex]}</h2>
-          {descriptions[navItems[activeIndex]]?.map((section, idx) => (
-            <div key={idx} style={{ marginBottom: "1rem" }}>
-              <h3>{section.title}</h3>
-              {section.content.map((line, lineIdx) => (
-                <p key={lineIdx}>{line}</p>
+        {/* nav + 설명 */}
+        <div className="result-row">
+          <div className="result-nav">
+            <ul>
+              {navItems.map((item, i) => (
+                <li
+                  key={i}
+                  className={activeIndex === i ? "active" : ""}
+                  onClick={() => setActiveIndex(i)}
+                >
+                  {item}
+                </li>
               ))}
-            </div>
-          ))}
-        </div>
-      </div>
+            </ul>
+          </div>
 
-      <Button onClick={() => navigate("/self")} text="다시 검사하기" />
-    </div>
+          <div className="result-detail survey-box">
+            <h2>{navItems[activeIndex]}</h2>
+            {descriptions[navItems[activeIndex]]?.map((section, idx) => (
+              <div key={idx} style={{ marginBottom: "1rem" }}>
+                <h3>{section.title}</h3>
+                {section.content.map((line, lineIdx) => (
+                  <p key={lineIdx}>{line}</p>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <Button onClick={() => navigate("/self")} text="다시 검사하기" />
+      </div>
+    </>
   );
 }
 

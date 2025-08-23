@@ -6,6 +6,91 @@
   padding: 1.25rem;
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
+  box-sizing: border-box;
+}
+
+/* 공통 박스 스타일 */
+.result-box,
+.state-box,
+.survey-box {
+  padding: 1rem;
+  border: 1px solid var(--black-color);
+  border-radius: 12px;
+  background-color: var(--white-color);
+  box-sizing: border-box;
+}
+
+/* 제목 스타일 */
+.result-box h2,
+.state-box h2 {
+  margin-bottom: 1rem;
+  color: var(--main-text-color);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* 결과/상태 영역 가로 배치 */
+.result-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 1200px;
+  align-items: stretch;
+}
+
+/* 왼쪽 네비/상태 박스 */
+.state-box,
+.result-nav {
+  flex: 1 1 250px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* 오른쪽 결과 박스 */
+.result-box,
+.result-detail {
+  flex: 2 1 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* 결과 네비 리스트 */
+.result-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0 0;
+}
+
+.result-nav li {
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.result-nav li:hover,
+.result-nav li.active {
+  background-color: color-mix(in srgb, var(--main-text-color) 30%, transparent);
+  color: var(--main-text-color);
+}
+
+/* 자리 표시자 텍스트 */
+.placeholder {
+  color: var(--black-color);
+}
+@import "../../styles/variables.css";
+
+/* 전체 컨테이너 */
+.result-container {
+  margin: 1.25rem 5%;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 1.5rem;
   box-sizing: border-box;
