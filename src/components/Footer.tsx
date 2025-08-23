@@ -15,7 +15,7 @@ export default function Footer() {
           {/* 기획 */}
           <div className="footer-column">
             <h4 className="role">기획</h4>
-            <p>숭실대 ㅇㅇ학부</p>
+            <p>숭실대 전자정보공학부</p>
             <h4>이준우</h4>
           </div>
           {/* 프론트엔드 */}

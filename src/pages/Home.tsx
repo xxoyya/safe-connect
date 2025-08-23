@@ -23,7 +23,7 @@ export default function Home() {
       <section className="hero">
         <div className="hero-grid">
           <div className="string">
-            <h1 className="title">Safe Connect</h1>
+            <h1 className="title">SafeNet</h1>
             <p className="subtitle">
               가정폭력 없는 사회, 당신의 작은 참여로 시작됩니다. <br />
               지금 함께해 주세요!
