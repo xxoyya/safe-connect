@@ -4,7 +4,7 @@ import Button from "../components/Button";
 import "../components/selfPage/Result.css";
 import { useNavigate } from "react-router-dom";
 
-import descriptionsData from "../data/Resultdescription.json";
+import descriptionsData from "../data/resultDescription.json";
 
 interface DescriptionItem {
   title: string;
