@@ -20,14 +20,15 @@ const legendItems = [
 
 const KoreaMap: React.FC<KoreaMapProps> = ({ data }) => {
   const getCountColor = (count: number): string => {
-    if (count >= 4000)
+    if (count >= 3.0 || count === 0) { // 3.0 이상이거나 0.0일 경우 '심각'
       return legendItems.find((i) => i.level === "심각")?.color || "#D9534F";
-    if (count >= 3000)
+    } else if (count >= 2.0) { // 2.0 ~ 2.99... 일 경우 '부족'
       return legendItems.find((i) => i.level === "부족")?.color || "#F0AD4E";
-    if (count >= 2000)
+    } else if (count >= 1.0) { // 1.0 ~ 1.99... 일 경우 '주의'
       return legendItems.find((i) => i.level === "주의")?.color || "#F7E3A1";
-    if (count >= 1000)
+    } else if (count > 0) { // 0.01 ~ 0.99... 일 경우 '적정'
       return legendItems.find((i) => i.level === "적정")?.color || "#5CB85C";
+    }
     return "#CCCCCC";
   };
 
