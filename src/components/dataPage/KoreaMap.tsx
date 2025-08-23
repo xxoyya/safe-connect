@@ -40,7 +40,11 @@ const KoreaMap: React.FC<KoreaMapProps> = ({ data }) => {
     <div className="korea-map-layout-container">
       {/* 지도 영역 */}
       <div className="map-chart-wrapper">
-        <SimpleSouthKoreaMapChart data={data} setColorByCount={getCountColor} />
+        <SimpleSouthKoreaMapChart
+          data={data}
+          setColorByCount={getCountColor}
+          unit=""
+        />
       </div>
 
       {/* 범례 영역 */}

@@ -35,7 +35,7 @@ const dataSection2Slides: SlideData[] = [
   },
   {
     type: "graph" as const,
-    title: "지역별 현재 시설(보호소·상담소) 수", // 2-2 (그래프)
+    title: "2025 지역별 시설(보호소·상담소) 수", // 2-2 (그래프)
     componentData: currentFacilityCount,
   },
   {
@@ -44,7 +44,6 @@ const dataSection2Slides: SlideData[] = [
     title: "상담소 위치", // 2-3 (지도)
     componentData: counselingCenters,
   },
-
 ];
 
 const Data = () => {
@@ -53,7 +52,7 @@ const Data = () => {
       style={{
         display: "flex",
         flexDirection: "column",
-        gap: "80px"
+        gap: "80px",
       }}
     >
       <Title text="데이터 대시보드" />
