@@ -46,8 +46,7 @@ const Data = () => {
       style={{
         display: "flex",
         flexDirection: "column",
-        gap: "80px",
-        padding: "20px 0",
+        gap: "80px"
       }}
     >
       <Title text="데이터 대시보드" />
