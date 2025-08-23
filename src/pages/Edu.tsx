@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Title from "../components/Title";
 import Button from "../components/Button";
-import "./edu.css";
+import "./Edu.css";
 
 import Account from "../assets/Account.png";
 import rank1 from "../assets/rank1.png";
