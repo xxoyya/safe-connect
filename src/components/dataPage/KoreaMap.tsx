@@ -12,21 +12,25 @@ type KoreaMapProps = {
 };
 
 const legendItems = [
-  { level: "적정", color: "#5CB85C" },
-  { level: "주의", color: "#F7E3A1" },
-  { level: "부족", color: "#F0AD4E" },
-  { level: "심각", color: "#D9534F" },
+  { level: "적정(0.01 ~ 0.99)", color: "#5CB85C" },
+  { level: "주의(1.0 ~ 1.99)", color: "#F7E3A1" },
+  { level: "부족(2.0 ~ 2.99)", color: "#F0AD4E" },
+  { level: "심각(0.0 혹은 3.0 이상)", color: "#D9534F" },
 ];
 
 const KoreaMap: React.FC<KoreaMapProps> = ({ data }) => {
   const getCountColor = (count: number): string => {
-    if (count >= 3.0 || count === 0) { // 3.0 이상이거나 0.0일 경우 '심각'
+    if (count >= 3.0 || count === 0) {
+      // 3.0 이상이거나 0.0일 경우 '심각'
       return legendItems.find((i) => i.level === "심각")?.color || "#D9534F";
-    } else if (count >= 2.0) { // 2.0 ~ 2.99... 일 경우 '부족'
+    } else if (count >= 2.0) {
+      // 2.0 ~ 2.99... 일 경우 '부족'
       return legendItems.find((i) => i.level === "부족")?.color || "#F0AD4E";
-    } else if (count >= 1.0) { // 1.0 ~ 1.99... 일 경우 '주의'
+    } else if (count >= 1.0) {
+      // 1.0 ~ 1.99... 일 경우 '주의'
       return legendItems.find((i) => i.level === "주의")?.color || "#F7E3A1";
-    } else if (count > 0) { // 0.01 ~ 0.99... 일 경우 '적정'
+    } else if (count > 0) {
+      // 0.01 ~ 0.99... 일 경우 '적정'
       return legendItems.find((i) => i.level === "적정")?.color || "#5CB85C";
     }
     return "#CCCCCC";
@@ -54,7 +58,9 @@ const KoreaMap: React.FC<KoreaMapProps> = ({ data }) => {
 
       {/* 설명란 영역 */}
       <div className="map-description">
-      통합격차지수 = (지역 신고건수 × 100,000 / 지역 인구수) / (상담소 수 × 1,000 (한 시설당 적정 커버 가능신고건수) + 보호소 수 × 16.74 (보호소 1개소당 평균 입소 정원))
+        통합격차지수 = (지역 신고건수 × 100,000 / 지역 인구수) / (상담소 수 ×
+        1,000 (한 시설당 적정 커버 가능신고건수) + 보호소 수 × 16.74 (보호소
+        1개소당 평균 입소 정원))
       </div>
     </div>
   );
