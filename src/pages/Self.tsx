@@ -31,28 +31,24 @@ function Self() {
   const navigate = useNavigate();
   const [answers, setAnswers] = useState<Record<string, string>>({});
 
- const handleSelect = (
-  qId: string,
-  option: string,
-  checked?: boolean
-) => {
-  if (qId.includes("-")) {
-    // 서브 질문: 체크박스
-    setAnswers((prev) => {
-      const prevArr: string[] = prev[qId]?.split(",") || [];
-      let newArr;
-      if (checked) {
-        newArr = [...prevArr, option];
-      } else {
-        newArr = prevArr.filter((o) => o !== option);
-      }
-      return { ...prev, [qId]: newArr.join(",") }; // 로컬스토리지 저장 편하게 ,로 구분
-    });
-  } else {
-    // 일반 질문: 라디오
-    setAnswers((prev) => ({ ...prev, [qId]: option }));
-  }
-};
+  const handleSelect = (qId: string, option: string, checked?: boolean) => {
+    if (qId.includes("-")) {
+      // 서브 질문: 체크박스
+      setAnswers((prev) => {
+        const prevArr: string[] = prev[qId]?.split(", ") || [];
+        let newArr;
+        if (checked) {
+          newArr = [...prevArr, option];
+        } else {
+          newArr = prevArr.filter((o) => o !== option);
+        }
+        return { ...prev, [qId]: newArr.join(", ") }; // 로컬스토리지 저장 편하게 ,로 구분
+      });
+    } else {
+      // 일반 질문: 라디오
+      setAnswers((prev) => ({ ...prev, [qId]: option }));
+    }
+  };
 
   const handleSubmit = () => {
     localStorage.setItem("surveyAnswers", JSON.stringify(answers));
