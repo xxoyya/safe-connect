@@ -8,8 +8,8 @@
   grid-template-rows: 56px 1fr 72px;
   background: #f8f9fb;
   border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0,0,0,.06);
   overflow: hidden;
+  border: 1px solid #2d3247;
 }
 
 /* Header */
@@ -19,7 +19,7 @@
   justify-content: center;
   font-weight: 700;
   letter-spacing: .2px;
-  color: #3a3f63;
+  color: #3a6793;
   background: #ffffff;
   border-bottom: 1px solid #eee;
 }
@@ -46,7 +46,7 @@
   justify-content: flex-end;
 }
 
-/* Avatar (bot) */
+/* bot */
 .avatar {
   width: 40px; height: 40px;
   border-radius: 10px;
@@ -85,7 +85,6 @@
   align-self: flex-end;
 }
 
-/* Paragraph spacing inside bubble */
 .bubble-text { margin: 0 0 8px; }
 .bubble-text:last-child { margin-bottom: 8px; }
 

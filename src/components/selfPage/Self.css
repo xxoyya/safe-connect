@@ -1,36 +1,72 @@
 @import "../../styles/variables.css";
 
+/* 전체 컨테이너 */
 .self-container {
-  margin: 5px 80px;
-  padding: 20px;
+  margin: 1rem 5%;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1.5rem;
 }
 
-.question-box {
+/* 공통 질문 박스 */
+.survey-wrapper {
   width: 100%;
   max-width: 1200px;
-  margin-bottom: 25px;
-  padding: 15px;
-  border: 1px solid var(--black-color);
+  min-width: 320px;
+  padding: 1rem;
   border-radius: 12px;
-  background: var(--white-color);
+  background-color: var(--white-color);
+  box-sizing: border-box;
 }
 
+/* Q2 전용 스타일 */
+.q2-wrapper {
+  border-color: var(--main-light-color);
+  background-color: var(--gray-color);
+}
+
+/* Q3 전용 스타일 */
+.q3-wrapper {
+  border-color: var(--main-dark-color);
+  background-color: var(--white-color);
+}
+
+/* 질문 텍스트 */
 .question-text {
-  font-weight: bold;
-  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  color: var(--main-text-color);
 }
 
+/* 옵션 리스트 */
 .options {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
+/* 옵션 라벨 */
 .option-label {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.option-label:hover,
+.option-label:focus-within {
+  background-color: var(--gray-color);
+}
+
+/* 서브 질문 컨테이너 */
+.sub-survey-container {
+  margin-top: 8rem; 
 }
