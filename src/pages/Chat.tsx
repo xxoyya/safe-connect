@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import logo from "../assets/logo.png";
 import botPrompt from "../components/chatPage/botPrompt.json"; // { content: "시스템 프롬프트" }
 import "./Chat.css";
+import { getChatResponse } from "./api/chat";
 
 export type ChatMessage = {
   id: string;
@@ -60,23 +61,21 @@ export default function Chat() {
   // API 호출 함수
   const callApi = async (currentMessages: ChatMessage[]) => {
     try {
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          messages: [
-            { role: "system", content: botPrompt.content },
-            ...currentMessages.map((m) => ({ role: m.role === "bot" ? "assistant" : "user", content: m.text })),
-          ],
-        }),
+      // API 호출 대신 직접 함수 사용
+      const response = getChatResponse({
+        messages: [
+          { role: "system" as const, content: botPrompt.content },
+          ...currentMessages.map((m) => ({ 
+            role: (m.role === "bot" ? "assistant" : "user") as "user" | "assistant", 
+            content: m.text 
+          })),
+        ],
       });
-
-      const data = await res.json();
 
       const reply: ChatMessage = {
         id: crypto.randomUUID(),
         role: "bot",
-        text: data.reply || "응답을 불러오지 못했어요.",
+        text: response.reply || "응답을 불러오지 못했어요.",
         time: nowLabel(),
       };
       setMessages((prev) => [...prev, reply]);
