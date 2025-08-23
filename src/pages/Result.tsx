@@ -17,12 +17,23 @@ interface Descriptions {
 
 function Result() {
   const navigate = useNavigate();
-  const answers = JSON.parse(localStorage.getItem("surveyAnswers") || "{}");
+  const rawAnswers = JSON.parse(localStorage.getItem("surveyAnswers") || "{}");
+
+  const answers: Record<string, string> = {};
+  Object.keys(rawAnswers).forEach((key) => {
+    const val = rawAnswers[key];
+    if (Array.isArray(val)) {
+      answers[key] = val.filter(Boolean).join(", ");
+    } else if (typeof val === "string") {
+      answers[key] = val.trim(); // 공백 제거
+    } else {
+      answers[key] = "";
+    }
+  });
 
   const descriptions = descriptionsData as Descriptions;
   const navItems = Object.keys(descriptions);
 
-  // Q2 선택한 폭력 유형을 기준으로 초기 activeIndex 설정
   const initialIndex = answers["2"] ? navItems.indexOf(answers["2"]) : 0;
   const [activeIndex, setActiveIndex] = useState(
     initialIndex >= 0 ? initialIndex : 0

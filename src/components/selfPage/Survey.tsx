@@ -9,11 +9,19 @@ interface SurveyProps {
   questionId: string;
   question: string;
   options: string[];
-  selectedOption?: string;
-  onSelect: (questionId: string, option: string) => void;
+  selectedOption?: string;          // Q1,Q2
+  selectedOptions?: string[];       // 서브 질문 다중 선택용
+  onSelect: (questionId: string, option: string, checked?: boolean) => void;
 }
 
-function Survey({ questionId, question, options, selectedOption, onSelect }: SurveyProps) {
+function Survey({
+  questionId,
+  question,
+  options,
+  selectedOption,
+  selectedOptions,
+  onSelect,
+}: SurveyProps) {
   const surveyImages: { [key: string]: string } = {
     "1": q1Img,
     "2": q2Img,
@@ -21,7 +29,9 @@ function Survey({ questionId, question, options, selectedOption, onSelect }: Sur
     "3-2": q302Img,
     "3-3": q303Img,
   };
-  
+
+  const isMulti = questionId.includes("-");
+
   return (
     <>
       <h2 className="survey-question">
@@ -32,16 +42,21 @@ function Survey({ questionId, question, options, selectedOption, onSelect }: Sur
           {options.map((opt, idx) => (
             <label key={idx} className="survey-option">
               <input
-                type="radio"
+                type={isMulti ? "checkbox" : "radio"}
                 name={`q${questionId}`}
                 value={opt}
-                checked={selectedOption === opt}
-                onChange={() => onSelect(questionId, opt)}
+                checked={
+                  isMulti
+                    ? selectedOptions?.includes(opt)
+                    : selectedOption === opt
+                }
+                onChange={(e) => onSelect(questionId, opt, e.target.checked)}
               />
               {opt}
             </label>
           ))}
         </div>
+
         {surveyImages[questionId] && (
           <img
             src={surveyImages[questionId]}
